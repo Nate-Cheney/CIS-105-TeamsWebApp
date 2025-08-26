@@ -2,8 +2,7 @@
 (async function() {
   const select = document.getElementById('team-select');
   const info = document.getElementById('team-info');
-  const labelEl = document.getElementById('team-label');
-  const divisionEl = document.getElementById('team-division');
+  const detailsEl = document.getElementById('team-details');
   const logoEl = document.getElementById('team-logo');
 
   // Load CSV text
@@ -38,8 +37,7 @@
     if (!abbr) { info.classList.add('hidden'); return; }
     const team = teams.find(t => t.abbr === abbr);
     if (!team) { info.classList.add('hidden'); return; }
-    labelEl.textContent = `${team.abbr} - ${team.name}`;
-    divisionEl.textContent = team.division;
+  detailsEl.innerHTML = `Name: ${team.name}<br>Abbr: ${team.abbr}<br>Division: ${team.division}`;
     logoEl.src = team.logo;
     logoEl.alt = `${team.name} logo`;
     info.classList.remove('hidden');
